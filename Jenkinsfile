@@ -20,9 +20,7 @@ pipeline {
     }
     post {
         always {
-            mail to: '309985004@qq.com',
-                 subject: "Jenkins Mail Test",
-                 body: "This is a Test"
+            echo "Hello Jenkins"
         }
         success {
             echo 'This will run only if successful'
