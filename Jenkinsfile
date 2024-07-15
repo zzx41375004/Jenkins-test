@@ -9,15 +9,20 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'echo "Fail!"; exit 0'
+            sh 'echo "Fail!"; exit 0'
+            }
+        }
+        stage('Sanity check') {
+            steps {
+                input "Does the staging environment look ok?"
             }
         }
     }
     post {
         always {
             mail to: '309985004@qq.com',
-                subject: "Jenkins Mail Test",
-                body: "This is a Test"
+                 subject: "Jenkins Mail Test",
+                 body: "This is a Test"
         }
         success {
             echo 'This will run only if successful'
@@ -30,7 +35,7 @@ pipeline {
         }
         changed {
             echo 'This will run only if the state of the Pipeline has changed'
-            echo 'For example, if the Pipeline was previously failing but is now successful'
+                echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
 }
