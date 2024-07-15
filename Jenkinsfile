@@ -31,4 +31,12 @@ pipeline {
             echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
+
+    post {
+        always {
+            mail to: '309985004@qq.com',
+                subject: "Jenkins Mail Test",
+                body: "This is a Test"
+        }
+    }
 }
